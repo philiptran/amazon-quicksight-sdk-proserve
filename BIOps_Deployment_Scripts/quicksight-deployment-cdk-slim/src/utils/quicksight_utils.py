@@ -1249,7 +1249,8 @@ class QuickSightAccount(object):
             if dashboard_id not in self.migrate_dashboards:
                 Response = self.DescribeDashboard(dashboard_id)                
                 Dashboard = QuickSightDashboard(Response)
-
+                print('Describe Dashboard > ', Response)
+                
                 self.migrate_dashboards[Dashboard.id] = Dashboard
                 self.add_datasets(Dashboard.datasets)
 
@@ -1267,7 +1268,8 @@ class QuickSightAccount(object):
           
            
             if dataset_id not in self.migrate_datasets:
-                Response = self.DescribeDataSet(dataset_id)                          
+                Response = self.DescribeDataSet(dataset_id)
+                print("Describe DataSet ", dataset_id, " > ", Response)
                 DataSet = QuickSightDataSet(Response)
                 
                 self.migrate_datasets[DataSet.id] = DataSet                         
