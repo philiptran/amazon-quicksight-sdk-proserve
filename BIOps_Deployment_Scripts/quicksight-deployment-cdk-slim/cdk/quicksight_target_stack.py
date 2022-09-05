@@ -140,7 +140,7 @@ class QuicksightTargetStack(core.Stack):
             "IamArn": self.quicksight_migration_target_assume_role.role_arn,
             "SessionName": "quicksight",
             "AwsAccountId": core.Aws.ACCOUNT_ID,
-            "Namespace": "default",
+            "Namespace": "default"
         }
 
         return AwsSdkCall(
@@ -148,6 +148,7 @@ class QuicksightTargetStack(core.Stack):
             service="QuickSight",
             parameters=create_params,
             physical_resource_id=PhysicalResourceId.of("cdksdk_qsuser"),
+            region="us-east-1",
         )
 
     # delete quicksight user
@@ -157,6 +158,7 @@ class QuicksightTargetStack(core.Stack):
             + "/quicksight",
             "AwsAccountId": core.Aws.ACCOUNT_ID,
             "Namespace": "default",
+            "Region": "us-east-1"
         }
 
         return AwsSdkCall(
@@ -164,6 +166,7 @@ class QuicksightTargetStack(core.Stack):
             service="QuickSight",
             parameters=params,
             physical_resource_id=PhysicalResourceId.of("cdksdk_qsuser"),
+            region="us-east-1"
         )
 
     # create policy assignment
@@ -188,6 +191,7 @@ class QuicksightTargetStack(core.Stack):
             assumed_role_arn=self.quicksight_migration_target_assume_role.role_arn,
             parameters=create_params,
             physical_resource_id=PhysicalResourceId.of("cdksdk_policyassignment"),
+            region="us-east-1"
         )
 
     # delete policy assignment
@@ -204,6 +208,7 @@ class QuicksightTargetStack(core.Stack):
             assumed_role_arn=self.quicksight_migration_target_assume_role.role_arn,
             parameters=delete_params,
             physical_resource_id=PhysicalResourceId.of("cdksdk_policyassignment"),
+            region="us-east-1"
         )
 
     def to_dict(self):
